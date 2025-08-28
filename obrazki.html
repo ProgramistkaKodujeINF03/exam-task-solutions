@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Efekty obrazu</title>
+    <link rel="stylesheet" href="styl.css">
+</head>
+<body>
+    <header>
+        <h2>Efekty na obrazach</h2>
+    </header>
+    <section>
+        <img src="pszczola.jpg" id="pszczola" alt="pszczoła na fioletowym kwiatku"> <br>
+        <input type="radio" name="efekt" id="blur">Blur <br>
+        <input type="radio" name="efekt" id="sepia">Sepia <br>
+        <input type="radio" name="efekt" id="negatyw">Negatyw <br>
+        <input type="button" onclick="efekt()" value="Zastosuj">
+    </section>
+    <section>
+        <img src="pomarancza.jpg" id="pomarancza" alt="drzewo pomarańczy"> <br>
+        <input type="button" onclick="kolory()" value="Kolory"> <input type="button" onclick="negatyw()" value="Czarno-biały">
+    </section>
+    <section>
+        <img src="owoce.jpg" id="owoce" alt="Kosz pełen owoców">
+        <input type="range" id="wartosc1" min="0" max="100" value="100"> <br>
+        <input type="button" onclick="rozmycie()" value="Zastosuj">
+    </section>
+    <section>
+        <img src="zolw.jpg" id="zolw" alt="Żółw w wodzie"> <br>
+        <input type="range" id="wartosc2" min="0" max="250"> <br>
+        <input type="button" onclick="jasnosc()" value="Zastosuj">
+    </section>
+    <footer>
+        <p><a href="http://www.css.com/," target="_blank">Zobacz inne efekty 
+            obrazu</a></p>
+            <p>Stronę wykonał: 0000</p>
+    </footer>
+
+    <script>
+        function efekt(){
+            if(document.getElementById("blur").checked){
+                document.getElementById("pszczola").style="filter: blur(6px)";
+            }
+            else if(document.getElementById("sepia").checked){
+                document.getElementById("pszczola").style="filter: sepia(100%)";
+            }
+            else {
+                document.getElementById("pszczola").style="filter: invert(100%)";
+            }
+            }
+        
+        function  kolory(){
+            document.getElementById("pomarancza").style="filter: none;";
+        }   
+
+        function negatyw(){
+            document.getElementById("pomarancza").style="filter: grayscale(100%);";
+        }
+
+        function rozmycie(){
+            var pasek1 = document.getElementById("wartosc1").value;
+            document.getElementById("owoce").style=`filter: opacity(${pasek1}%)`;
+        }
+
+        function jasnosc(){ 
+            var pasek2 = document.getElementById("wartosc2").value;
+            document.getElementById("zolw").style=`filter: brightness(${pasek2}%)`;
+        }
+        
+    </script>
+</body>
+</html>
